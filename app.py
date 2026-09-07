@@ -360,14 +360,14 @@ if page == "🏠 Overview":
 <h4 style="color: #ffffff; margin: 0 0 8px 0;">Predict Churn</h4>
 <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">Analyze a specific customer's risk profile</p>
 </div>""", unsafe_allow_html=True)
-            if st.button("Go to Predict", key="qa_pred", use_container_width=True): st.session_state.update(nav_radio="🔮 Predict"); st.rerun()
+            st.button("Go to Predict", key="qa_pred", use_container_width=True, on_click=lambda: st.session_state.update(nav_radio="🔮 Predict"))
         with qa2:
             st.markdown("""<div class='premium-panel' style='text-align: center; cursor: pointer; transition: all 0.3s ease;' onmouseover='this.style.transform="translateY(-5px)"' onmouseout='this.style.transform="translateY(0)"'>
 <div style="font-size: 2.5rem; margin-bottom: 16px;">🎯</div>
 <h4 style="color: #ffffff; margin: 0 0 8px 0;">Risk Center</h4>
 <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">View list of most critical customers</p>
 </div>""", unsafe_allow_html=True)
-            if st.button("Go to Risk Center", key="qa_risk", use_container_width=True): st.session_state.update(nav_radio="🎯 Risk Center"); st.rerun()
+            st.button("Go to Risk Center", key="qa_risk", use_container_width=True, on_click=lambda: st.session_state.update(nav_radio="🎯 Risk Center"))
 
 # ==========================================
 # 2. PREDICT
