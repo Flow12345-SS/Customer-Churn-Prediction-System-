@@ -153,11 +153,12 @@ model = load_model()
 metrics_df = load_metrics()
 df = get_global_predictions(df_raw, model)
 
-def get_feature_importance():
-    if model is not None:
+@st.cache_data
+def get_feature_importance(_model):
+    if _model is not None:
         try:
-            clf = model.named_steps['classifier']
-            pre = model.named_steps['preprocessor']
+            clf = _model.named_steps['classifier']
+            pre = _model.named_steps['preprocessor']
             if hasattr(clf, 'coef_'):
                 coefs = clf.coef_[0]
                 features = pre.get_feature_names_out()
@@ -166,7 +167,7 @@ def get_feature_importance():
                 return fi_df.sort_values(by='Importance', key=abs, ascending=False).head(10)
         except: pass
     return None
-feature_importance_df = get_feature_importance()
+feature_importance_df = get_feature_importance(model)
 
 # ==========================================
 # UI HELPERS
